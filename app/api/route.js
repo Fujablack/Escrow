@@ -22,7 +22,7 @@ export async function POST(req) {
       item: b.item.trim(), amount, fee: fee(amount), account_name: r.data.account_name,
       recipient: rc.data.recipient_code, seller_key: key(), buyer_key: key(),
     }).select().single();
-    if (error) return J({ error: 'Could not create deal.' }, 500);
+    if (error) return J({ error: 'Database: ' + error.message }, 500);
     return J({ id: data.id, seller_key: data.seller_key });
   }
 

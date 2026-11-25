@@ -18,7 +18,9 @@ export default function Home() {
     <input placeholder="What are you selling?" value={f.item} onChange={set('item')} />
     <input placeholder="Price (₦)" type="number" value={f.amount} onChange={set('amount')} />
     <select value={f.bank} onChange={set('bank')}><option value="">Your bank</option>
-      {banks.map(b => <option key={b.code} value={b.code}>{b.name}</option>)}</select>
+      {/* {banks.map(b => <option key={b.code} value={b.code}>{b.name}</option>)} */}
+      {banks.map((b, i) => <option key={i} value={b.code}>{b.name}</option>)}
+      </select>
     <input placeholder="Account number" maxLength={10} value={f.account} onChange={set('account')} />
     {err && <p className="err">{err}</p>}
     <button disabled={busy} onClick={go}>{busy ? 'Creating…' : 'Create link'}</button>
